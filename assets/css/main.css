@@ -28,6 +28,7 @@ body *{
 }
 .container p{
     width: 100px;
+    font-size: 18px;
     text-align: right;
 }
 .ingreso{
@@ -59,4 +60,22 @@ body *{
 }
 .hide{
     display: none;
+}
+
+@media screen and (max-width: 425px) {
+    .container{
+        width: 95%;
+        padding: 10px 0;
+    }
+    .ingreso{
+        font-size: 1rem;
+    }
+    .container p{
+        width: 70px;
+        text-align: right;
+        font-size: 14px;
+    }
+    #resultado{
+        font-size: 2rem;
+    }
 }

@@ -1,12 +1,7 @@
-// Precios
-var p_papelMantequilla = 0.12;
-var p_ecoCuero = 32;
-var p_cintaEspiga = 18.333;
 //Variables modificables
 var cantidad;
 var diametro;
 var precio;
-var p_baseTortas;
 
 //Insertar input a clase ingreso
 var ingresoClassArray = document.getElementsByClassName("ingreso");
@@ -34,19 +29,18 @@ function calcular(){
     
     // SI es base de tortas se ocultan clases no ocupadas y se añaden nuevas, Se calcula resultado con el parámetro dimension
     if(producto == "baseTortas"){
-        let mostrar = document.querySelectorAll("#uno, #dos")
+        let items_normal = document.querySelectorAll("#uno, #dos")
         for(let i = 0; i < mostrar.length; i ++){
-            mostrar[i].classList.add("hide");
-            mostrar[i].classList.remove("show");
+            items_normal[i].classList.add("hide");
+            items_normal[i].classList.remove("show");
         }
-        document.getElementById("cuatro").classList.add("show");
-        document.getElementById("cuatro").classList.remove("hide");
-        document.getElementById("tres").classList.add("show");
-        document.getElementById("tres").classList.remove("hide");
-        document.querySelector("#alto").value = alto;
-
+        let items_torta = document.querySelectorAll("#tres, #cuatro")
+        for(let i = 0; i < mostrar.length; i ++){
+            items_torta[i].classList.remove("hide");
+            items_torta[i].classList.add("show");
+        }
         calculoBaseTortas(withLogo);
-        result = cantidad * p_baseTortas;
+        result = cantidad * precio;
     }
     else {
         let mostrar = document.querySelectorAll("#uno, #dos")
@@ -73,39 +67,39 @@ function calcular(){
 function calculoBaseTortas(logo){
     if (logo){
         if (diametro == 15)
-            p_baseTortas = 550;
+            precio = 550;
         else if (diametro == 20)
-            p_baseTortas = 800;
+        precio = 800;
         else if (diametro == 25)
-            p_baseTortas = 1250;
+        precio = 1250;
         else if (diametro == 30)
-            p_baseTortas = 1450;
+        precio = 1450;
         else if (diametro == 35)
-            p_baseTortas = 1750;
+        precio = 1750;
         else if (diametro == 40)
-            p_baseTortas = 2100;
+        precio = 2100;
         else if (diametro == 45)
-            p_baseTortas = 2350;
+        precio = 2350;
         else if (diametro == 50)
-            p_baseTortas = 2650;
+        precio = 2650;
     }
     else {
         if (diametro == 15)
-            p_baseTortas = 400;
+            precio = 400;
         else if (diametro == 20)
-            p_baseTortas = 700;
+            precio = 700;
         else if (diametro == 25)
-            p_baseTortas = 1000;
+            precio = 1000;
         else if (diametro == 30)
-            p_baseTortas = 1300;
+            precio = 1300;
         else if (diametro == 35)
-            p_baseTortas = 1500;
+            precio = 1500;
         else if (diametro == 40)
-            p_baseTortas = 1750;
+            precio = 1750;
         else if (diametro == 45)
-            p_baseTortas = 2050;
+            precio = 2050;
         else if (diametro == 50)
-            p_baseTortas = 2300;
+            precio = 2300;
     }
 }
 
