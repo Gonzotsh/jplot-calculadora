@@ -8,10 +8,52 @@
 </head>
 <body>
     <div class="container">
-        <input type="number" placeholder="Alto" id="alto"> 
-        <input type="number" placeholder="Ancho" id="ancho">
-        <input type="number" placeholder="Cantidad" id="cantidad">
-        <button onclick=sumar()>Sumar</button>
+        <h1>Cotizador Jplot</h1>
+        <div class="row show">
+            <p>Producto</p>
+            <select id="producto" class="ingreso">
+                <option value="mantequilla">Papel Mantequilla</option>
+                <option value="ecoCuero">Eco Cuero</option>
+                <option value="cintaEspiga">Cinta Espiga</option>
+                <option value="baseTortas">Base de Tortas</option>
+            </select>
+        </div>
+
+        <div id="uno" class="row show">
+            <p>Alto</p>
+            <input type="number" id="alto" class="ingreso"> 
+        </div>
+
+        <div id="dos" class="row show">
+            <p>Ancho</p>
+            <input type="number" id="ancho" class="ingreso">
+        </div>
+
+        <div id="cuatro" class="row hide">
+            <p>Diámetro</p>
+            <select id="diametro" class="ingreso">
+                <option value="15">15 cm</option>
+                <option value="20">20 cm</option>
+                <option value="25">25 cm</option>
+                <option value="30">30 cm</option>
+                <option value="35">35 cm</option>
+                <option value="40">40 cm</option>
+                <option value="45">45 cm</option>
+                <option value="50">50 cm</option>
+            </select>
+        </div>
+
+        <div id="cinco" class="row show">
+            <p>Cantidad</p>
+            <input type="number" id="cantidad" class="ingreso">
+        </div>
+
+        <div id="tres" class="row hide">
+            <p>¿Con logo?</p>
+            <input type="checkbox" id="logo" class="ingreso">
+        </div>
+        
+        <div id="resultado"></div>
     </div>
     <script src="./assets/js/calculator.js"></script>
 </body>

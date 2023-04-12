@@ -1,7 +1,62 @@
-input{
+body{
+    margin: 0;
+    background-image: url(../img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+body *{
+    box-sizing: border-box;
+}
+
+.row{
+    justify-content: center;
+}
+.container{
+    width: 80%;
+    height: auto;
+    padding: 40px 0;
+    background-color: rgba(0, 0, 0, 0.568);
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    transition: all;
+    transition-duration: 0.3s;
+}
+.container p{
+    width: 100px;
+    text-align: right;
+}
+.ingreso{
     width: 200px;
     height: 40px;
+    margin: 4px 20px;
+    border-radius: 5px;
     font-size: large;
     border: none;
-    background-color: antiquewhite;
+    transition: all;
+    transition-duration: 0.3s;
+}
+
+#resultado{
+    margin: 20px auto;
+    width: 80%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.646);
+    font-size: 4rem;
+}
+
+.show{
+    display: flex;
+}
+.hide{
+    display: none;
 }
