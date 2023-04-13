@@ -1,12 +1,7 @@
-// Precios
-var p_papelMantequilla = 0.12;
-var p_ecoCuero = 32;
-var p_cintaEspiga = 18.333;
-//Variables modificables
+//Variables Globales
 var cantidad;
 var diametro;
 var precio;
-var p_baseTortas;
 
 //Insertar input a clase ingreso
 var ingresoClassArray = document.getElementsByClassName("ingreso");
@@ -15,52 +10,50 @@ for (let i = 0; i < ingresoClassArray.length; i++)
 
 //Se inicia calculadora 
 function calcular(){
-    
+    diametro = document.querySelector("#diametro").value;
+    cantidad = document.querySelector("#cantidad").value;
     let producto = document.querySelector("#producto").value;
     let alto = document.querySelector("#alto").value;
-    let ancho = document.querySelector("#ancho").value;
-    cantidad = document.querySelector("#cantidad").value;
-    let withLogo = document.querySelector("#logo").checked;
-    diametro = document.querySelector("#diametro").value;
+    let ancho = document.querySelector("#ancho").value;    
+    let withLogo = document.querySelector("#logo").checked;    
     let result;
 
     //Ajustar precio acorde a producto seleccionado
     if (producto == "mantequilla")
-        CalcMantequilla();
+        calc_mantequilla();
     else if (producto == "ecoCuero")
-        CalcEcoCuero();
+        calc_ecoCuero();
     else if (producto == "cintaEspiga")
-        CalcEspiga();
+        calc_espiga();
     
     // Si es base de tortas se ocultan clases no ocupadas y se añaden nuevas, Se calcula resultado con el parámetro dimension
     if(producto == "baseTortas"){
-        let mostrar = document.querySelectorAll("#uno, #dos")
+        let mostrar = document.querySelectorAll("#containerAlto, #containerAncho")
         for(let i = 0; i < mostrar.length; i ++){
             mostrar[i].classList.add("hide");
             mostrar[i].classList.remove("show");
         }
 
-        let mostrar2 = document.querySelectorAll("#tres, #cuatro")
+        let mostrar2 = document.querySelectorAll("#containerDiametro, #containerLogo")
         for(let i = 0; i < mostrar.length; i ++){
             mostrar2[i].classList.remove("hide");
             mostrar2[i].classList.add("show");
         }
-        calculoBaseTortas(withLogo);
-        result = cantidad * p_baseTortas;
+        calc_baseTortas(withLogo);
+        result = cantidad * precio;
     }
     else {
-        let mostrar = document.querySelectorAll("#uno, #dos")
+        let mostrar = document.querySelectorAll("#containerAlto, #containerAncho")
         for(let i = 0; i < mostrar.length; i ++){
             mostrar[i].classList.remove("hide");
             mostrar[i].classList.add("show");
         }
         
-        let mostrar2 = document.querySelectorAll("#tres, #cuatro")
+        let mostrar2 = document.querySelectorAll("#containerDiametro, #containerLogo")
         for(let i = 0; i < mostrar.length; i ++){
             mostrar2[i].classList.add("hide");
             mostrar2[i].classList.remove("show");
         }
-
         result = Math.round(alto * ancho * cantidad * precio);
     }
 
@@ -68,50 +61,50 @@ function calcular(){
     if(result >0)
         document.querySelector("#resultado").innerHTML = "$" + result.toLocaleString("es-CL");
     else
-        document.querySelector("#resultado").innerHTML = "";
+        document.querySelector("#resultado").innerHTML = "$0";
 }
 
 //Realiza calculo para saber precio de la base de tortas
-function calculoBaseTortas(logo){
+function calc_baseTortas(logo){
     if (logo){
         if (diametro == 15)
-            p_baseTortas = 550;
+            precio = 550;
         else if (diametro == 20)
-            p_baseTortas = 800;
+            precio = 800;
         else if (diametro == 25)
-            p_baseTortas = 1250;
+            precio = 1250;
         else if (diametro == 30)
-            p_baseTortas = 1450;
+            precio = 1450;
         else if (diametro == 35)
-            p_baseTortas = 1750;
+            precio = 1750;
         else if (diametro == 40)
-            p_baseTortas = 2100;
+            precio = 2100;
         else if (diametro == 45)
-            p_baseTortas = 2350;
+            precio = 2350;
         else if (diametro == 50)
-            p_baseTortas = 2650;
+            precio = 2650;
     }
     else {
         if (diametro == 15)
-            p_baseTortas = 400;
+            precio = 400;
         else if (diametro == 20)
-            p_baseTortas = 700;
+            precio = 700;
         else if (diametro == 25)
-            p_baseTortas = 1000;
+            precio = 1000;
         else if (diametro == 30)
-            p_baseTortas = 1300;
+            precio = 1300;
         else if (diametro == 35)
-            p_baseTortas = 1500;
+            precio = 1500;
         else if (diametro == 40)
-            p_baseTortas = 1750;
+            precio = 1750;
         else if (diametro == 45)
-            p_baseTortas = 2050;
+            precio = 2050;
         else if (diametro == 50)
-            p_baseTortas = 2300;
+            precio = 2300;
     }
 }
 
-function CalcMantequilla(){
+function calc_mantequilla(){
     if(cantidad <= 25)
         precio = 0.12;
     else if(cantidad <= 50)
@@ -119,7 +112,7 @@ function CalcMantequilla(){
     else
         precio = 0.10;
 }
-function CalcEcoCuero(){
+function calc_ecoCuero(){
     if(cantidad <= 25)
         precio = 32;
     else if(cantidad <= 50)
@@ -127,7 +120,7 @@ function CalcEcoCuero(){
     else
         precio = 28;
 }
-function CalcEspiga(){
+function calc_espiga(){
     if(cantidad <= 25)
         precio = 18.333;
     else if(cantidad <= 50)
